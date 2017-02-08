@@ -47,6 +47,7 @@
 
 @property (weak) IBOutlet NSTextField *slimIntensityField;
 @property (weak) IBOutlet NSTextField *filtersField;
+@property (weak) IBOutlet NSButton *preferLandscapeBtn;
 
 @end
 
@@ -72,6 +73,7 @@
     self.needFaceButton.state = 1;
     self.preferFrontCamBtn.state = 0;
     self.preferBackCamBtn.state = 0;
+    self.preferLandscapeBtn.state = 0;
     
     self.imgCountField.enabled = NO;
     self.topLeftOffsetField.enabled = NO;
@@ -260,6 +262,8 @@
     userPromptDict[@"preferFontCam"] = @(self.preferFrontCamBtn.state);
     userPromptDict[@"preferBackCam"] = @(self.preferBackCamBtn.state);
     userPromptDict[@"needFace"] = [self.groupDictionary[@"baseFaceWidth"] integerValue] == 0?@(0):@(1);
+    userPromptDict[@"preferLandscape"] = @(self.preferLandscapeBtn.state);
+
     
     [self.groupDictionary setObject:filter forKey:@"filters"];
     [self.groupDictionary setObject:userPromptDict forKey:@"userPrompts"];

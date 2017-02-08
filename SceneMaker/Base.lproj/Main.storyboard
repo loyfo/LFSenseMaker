@@ -972,6 +972,14 @@
                                     <action selector="add:" target="XfG-lQ-9wD" id="qaR-7I-d5l"/>
                                 </connections>
                             </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFx-dO-u2N">
+                                <rect key="frame" x="537" y="102" width="91" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="横屏" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="fix-XX-qVv">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -989,6 +997,7 @@
                         <outlet property="pointTrakButton" destination="l4a-xN-15V" id="iSn-hZ-z6t"/>
                         <outlet property="preferBackCamBtn" destination="rgQ-28-HyK" id="hBi-zd-s6M"/>
                         <outlet property="preferFrontCamBtn" destination="XEX-Xv-g7K" id="7Qx-LH-3AU"/>
+                        <outlet property="preferLandscapeBtn" destination="kFx-dO-u2N" id="fAx-TC-WoI"/>
                         <outlet property="slimIntensityField" destination="c1v-J2-zsK" id="txI-dR-uTP"/>
                         <outlet property="topLeftOffsetField" destination="kMg-Wi-gl5" id="EjO-cb-X7H"/>
                         <outlet property="widthField" destination="DQE-48-coX" id="Vf1-Rb-omz"/>
@@ -996,7 +1005,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="455" y="710"/>
+            <point key="canvasLocation" x="454.5" y="710"/>
         </scene>
     </scenes>
     <resources>
