@@ -8,46 +8,83 @@
 
 #import "ViewController.h"
 
+static NSString *configVersion = @"1.0";
+
 @interface ViewController () <NSTextViewDelegate>
 {
     BOOL pointTracker;
     BOOL fullScreenSticker;
+    BOOL preferMouthOpen;
+    NSInteger ancherPointNum;
 }
+
+
+//@property (weak) IBOutlet NSTextField *faceWidthField;
+//@property (weak) IBOutlet NSTextField *toFaceScaleField;
+
+//@property (weak) IBOutlet NSTextField *ancherpointField;
+//
+//
+//@property (nonatomic, weak) IBOutlet NSTextField* centerField;
+//@property (nonatomic, weak) IBOutlet NSTextField* offsetXField;
+//@property (nonatomic, weak) IBOutlet NSTextField* offsetYField;
+//
+//@property (nonatomic, weak) IBOutlet NSTextField* preferWField;
+//@property (nonatomic, weak) IBOutlet NSTextField* wpointField;
+//
+@property (nonatomic, strong) NSMutableDictionary* groupDictionary;
+@property (nonatomic, strong) NSMutableArray* elementsList;
+//
+//
+//
+//@property (weak) IBOutlet NSButton *fullscreenStickerBtn;
+//
+//@property (weak) IBOutlet NSButton *needFaceButton;
+//@property (weak) IBOutlet NSButton *preferFrontCamBtn;
+//@property (weak) IBOutlet NSButton *preferBackCamBtn;
+//
+//
+//@property (weak) IBOutlet NSButton *preferLandscapeBtn;
+//@property (weak) IBOutlet NSButton *needMouthOpenBtn;
+
+
+//@property (weak) IBOutlet NSTextField *topLeftOffsetField;
+
+//new
+@property (weak) IBOutlet NSTextField *beautyLevelField;
+@property (weak) IBOutlet NSTextField *slimIntensityField;
+@property (weak) IBOutlet NSTextField *filtersField;
+
+@property (nonatomic, weak) IBOutlet NSTextField* nameField;
+@property (nonatomic, weak) IBOutlet NSTextField* widthField;
+@property (nonatomic, weak) IBOutlet NSTextField* heightField;
+
+@property (weak) IBOutlet NSPopUpButton *benchmarksTypeBtn;
+@property (weak) IBOutlet NSTextField *ancherPointNumTF;
+@property (weak) IBOutlet NSTextField *offsetTF;
 
 @property (nonatomic, strong) IBOutlet NSTextView* pathTextView;
 @property (nonatomic, weak) IBOutlet NSImageView* imageView;
 @property (weak) IBOutlet NSTextField *imgCountField;
 @property (weak) IBOutlet NSButton *animateImgButton;
 @property (weak) IBOutlet NSTextField *animationDuritionField;
-@property (weak) IBOutlet NSButton *pointTrakButton;
-@property (weak) IBOutlet NSTextField *faceWidthField;
-@property (weak) IBOutlet NSTextField *toFaceScaleField;
-@property (weak) IBOutlet NSTextField *beautyLevelField;
-@property (weak) IBOutlet NSTextField *ancherpointField;
+@property (weak) IBOutlet NSTextField *needFaceCountTF;
 
-@property (nonatomic, weak) IBOutlet NSTextField* nameField;
-@property (nonatomic, weak) IBOutlet NSTextField* widthField;
-@property (nonatomic, weak) IBOutlet NSTextField* heightField;
-@property (nonatomic, weak) IBOutlet NSTextField* centerField;
-@property (nonatomic, weak) IBOutlet NSTextField* offsetXField;
-@property (nonatomic, weak) IBOutlet NSTextField* offsetYField;
+//素材需求
+@property (weak) IBOutlet NSButton *dpMouthOpenBtn;
+@property (weak) IBOutlet NSButton *dpLandscapeBtn;
+@property (weak) IBOutlet NSButton *dpFontCamBtn;
+@property (weak) IBOutlet NSButton *dpBackCamBtn;
+@property (weak) IBOutlet NSButton *dpSecondFaceBtn;
+@property (weak) IBOutlet NSButton *dpThirdFaceBtn;
 
-@property (nonatomic, weak) IBOutlet NSTextField* preferWField;
-@property (nonatomic, weak) IBOutlet NSTextField* wpointField;
+//用户提示
+@property (weak) IBOutlet NSButton *preFontCamBtn;
+@property (weak) IBOutlet NSButton *preBackCamBtn;
+@property (weak) IBOutlet NSButton *preLandscapeBtn;
+@property (weak) IBOutlet NSButton *preMouthOpenBtn;
+@property (weak) IBOutlet NSButton *preMoreFaceBtn;
 
-@property (nonatomic, strong) NSMutableDictionary* groupDictionary;
-@property (nonatomic, strong) NSMutableArray* elementsList;
-@property (weak) IBOutlet NSTextField *topLeftOffsetField;
-
-@property (weak) IBOutlet NSButton *fullscreenStickerBtn;
-
-@property (weak) IBOutlet NSButton *needFaceButton;
-@property (weak) IBOutlet NSButton *preferFrontCamBtn;
-@property (weak) IBOutlet NSButton *preferBackCamBtn;
-
-@property (weak) IBOutlet NSTextField *slimIntensityField;
-@property (weak) IBOutlet NSTextField *filtersField;
-@property (weak) IBOutlet NSButton *preferLandscapeBtn;
 
 @end
 
@@ -55,36 +92,79 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self.animateImgButton  setNextState];
-    [self.fullscreenStickerBtn setNextState];
-    
-    [self reInit];
-    
-    
+
+    [self reInitScene];
+    [self reInitElement];
+
     // Do any additional setup after loading the view.
 }
 
--(void)reInit {
+-(void)reInitScene {
     self.groupDictionary = nil;
     
-    
+    [self.animateImgButton  setNextState];
     self.filtersField.stringValue = @"";
-    self.needFaceButton.state = 1;
-    self.preferFrontCamBtn.state = 0;
-    self.preferBackCamBtn.state = 0;
-    self.preferLandscapeBtn.state = 0;
+//    self.needFaceButton.state = 1;
+    self.preFontCamBtn.state = 0;
+    self.preBackCamBtn.state = 0;
+    self.preLandscapeBtn.state = 0;
+    self.preMouthOpenBtn.state = 0;
     
     self.imgCountField.enabled = NO;
-    self.topLeftOffsetField.enabled = NO;
     self.animationDuritionField.enabled = NO;
-    pointTracker = YES;
+    self.needFaceCountTF.intValue = 0;
     
-    self.faceWidthField.stringValue = @"450";
-    self.toFaceScaleField.stringValue = @"1";
     self.beautyLevelField.stringValue = @"0.65";
     self.slimIntensityField.stringValue = @"1.0";
 }
+
+-(void)reInitElement {
+    _pathTextView.string = @"";
+    _needFaceCountTF.stringValue = @"";
+    _nameField.stringValue = @"";
+    _widthField.stringValue = @"";
+    _heightField.stringValue = @"";
+    _ancherPointNumTF.stringValue = @"";
+    _offsetTF.stringValue = @"0,0";
+    
+    ancherPointNum = -1;
+    [self changeBenchMarksType:_benchmarksTypeBtn];
+    _dpMouthOpenBtn.state = 0;
+    _dpLandscapeBtn.state = 0;
+    _dpFontCamBtn.state = 0;
+    _dpBackCamBtn.state = 0;
+    _dpSecondFaceBtn.state = 0;
+    _dpThirdFaceBtn.state = 0;
+    
+}
+
+//切换对点方式
+- (IBAction)changeBenchMarksType:(NSPopUpButton *)sender {
+    _ancherPointNumTF.editable = NO;
+    NSLog(@"切换对点方式:%ld",(long)sender.selectedTag);
+    switch (sender.selectedTag) {
+        case 0:  //固定
+            
+            break;
+        case 1:  //指定识别点
+            _needFaceCountTF.intValue = MAX(_needFaceCountTF.intValue, 1);
+            _ancherPointNumTF.editable = YES;
+            [_ancherPointNumTF becomeFirstResponder];
+            break;
+        case 2:  //鼻尖
+            _needFaceCountTF.intValue = MAX(_needFaceCountTF.intValue, 1);
+            break;
+        case 3:  //嘴部
+            _needFaceCountTF.intValue = MAX(_needFaceCountTF.intValue, 1);
+            break;
+        case 4:  //左上角
+            _needFaceCountTF.intValue = MAX(_needFaceCountTF.intValue, 1);
+            break;
+        default:
+            break;
+    }
+}
+
 
 //切换动态素材
 - (IBAction)changeIfAnimateImg:(NSButton *)sender {
@@ -108,20 +188,6 @@
     }
     return directoryPath;
 }
-
-- (IBAction)pointTrackClick:(id)sender {
-    pointTracker = !pointTracker;
-    self.topLeftOffsetField.enabled = !pointTracker;
-    self.ancherpointField.enabled = pointTracker;
-}
-- (IBAction)fullScreenClick:(id)sender {
-    fullScreenSticker = !fullScreenSticker;
-    if (fullScreenSticker) {
-        self.faceWidthField.floatValue = 0;
-    }
-}
-
-
 
 - (IBAction)add:(id)sender
 {
@@ -147,15 +213,17 @@
             [[NSFileManager defaultManager] copyItemAtPath:sourceItemPath toPath:[path stringByAppendingPathComponent:[NSString stringWithFormat:@"%d.png",i]] error:nil];
         }
     }
+    
+    
 
-    //左上方偏移(普通对点方式)
-    NSArray *topleftOffsetArray = [self.topLeftOffsetField.stringValue componentsSeparatedByString:@","];
+    //偏移量
+    NSArray *offsetArray = [self.offsetTF.stringValue componentsSeparatedByString:@","];
     
-    NSPoint topleftOffset = CGPointZero;
+    NSPoint offset = CGPointZero;
     
-    if (!pointTracker) {
-        if (topleftOffsetArray.count == 2) {
-            topleftOffset = NSMakePoint([topleftOffsetArray[0] floatValue], [topleftOffsetArray[1] floatValue]);
+    if (_benchmarksTypeBtn.selectedTag) {
+        if (offsetArray.count == 2) {
+            offset = NSMakePoint([offsetArray[0] floatValue], [offsetArray[1] floatValue]);
         }else {
             NSError *error = [NSError errorWithDomain:@"无效的左上角偏移点值，请确保正确输入并使用“,”分隔！" code:1005 userInfo:nil];
             NSAlert  *topleftAlert = [NSAlert alertWithError:error];
@@ -164,6 +232,17 @@
         }
     }
     
+    if (_benchmarksTypeBtn.selectedTag == 1) {
+        ancherPointNum = _ancherPointNumTF.intValue;
+        if (ancherPointNum < 0 || ancherPointNum > 94) {
+            NSError *error = [NSError errorWithDomain:@"识别点范围不正确（0 ~ 94）！" code:1006 userInfo:nil];
+            NSAlert  *ncherPointNumAlert = [NSAlert alertWithError:error];
+            [ncherPointNumAlert runModal];
+            return;
+        }
+    }
+    
+    //动画相关
     NSString *faceCount = @"1";
     NSString *frameDuration = @"4";
     if (self.imgCountField.enabled) {
@@ -177,94 +256,90 @@
         
     }
     
-    NSInteger pointTrack = pointTracker;
-    
-    //特殊点偏移
-    NSArray *ancherpointArray = [self.ancherpointField.stringValue componentsSeparatedByString:@","];
-    NSPoint ancherpoint = NSMakePoint(self.widthField.floatValue / 2.0, self.heightField.floatValue / 2.0);
-
-    if (pointTracker) {
-        if (ancherpointArray.count == 2) {
-            ancherpoint = NSMakePoint(ancherpoint.x + [ancherpointArray[0] floatValue],ancherpoint.y + [ancherpointArray[1] floatValue]);
-        }
-        
-   
+    //素材前置条件
+    NSMutableArray *dependentConditionArray = [NSMutableArray array];
+    if (self.dpMouthOpenBtn.state) {
+        [dependentConditionArray addObject:@"MouthOpen"];
     }
+    
+    if (self.dpLandscapeBtn.state) {
+        [dependentConditionArray addObject:@"Landscape"];
+    }
+    
+    if (self.dpFontCamBtn.state) {
+        [dependentConditionArray addObject:@"FontCam"];
+    }
+    
+    if (self.dpBackCamBtn.state) {
+        [dependentConditionArray addObject:@"BackCam"];
+    }
+    
+    if (self.dpSecondFaceBtn.state) {
+        [dependentConditionArray addObject:@"SecondFace"];
+    }
+    
+    if (self.dpThirdFaceBtn.state) {
+        [dependentConditionArray addObject:@"ThirdFace"];
+    }
+
+    
+    
+//    NSInteger pointTrack = pointTracker;
+//    
+//    //特殊点偏移
+//    NSArray *ancherpointArray = [self.offsetTF.stringValue componentsSeparatedByString:@","];
+//    NSPoint ancherpoint = NSMakePoint(self.widthField.floatValue / 2.0, self.heightField.floatValue / 2.0);
+//
+//    if (pointTracker) {
+//        if (ancherpointArray.count == 2) {
+//            ancherpoint = NSMakePoint(ancherpoint.x + [ancherpointArray[0] floatValue],ancherpoint.y + [ancherpointArray[1] floatValue]);
+//        }
+//        
+//   
+//    }
     
     
     NSMutableDictionary* element = [@{
                                       @"folderName": _nameField.stringValue,
-                                      @"centerPoints":@[NSStringFromPoint(NSMakePoint(0, 0))],
                                       @"size": NSStringFromSize(NSMakeSize(_widthField.floatValue, _heightField.floatValue)),
-                                      @"offset": NSStringFromSize(NSMakeSize(0, 0)),
-                                      @"alignScreen": @"",
-                                      @"offsetScreenX": @(0),
-                                      @"offsetScreenY": @(0),
-                                      @"animateLoop": @(1),
+                                      @"offset": NSStringFromPoint(offset),
+                                      @"animateLoop": @(0),
                                       @"frameDuration": @([frameDuration integerValue]),
                                       @"frameCount": @([faceCount integerValue]),
-                                      @"topleft":NSStringFromPoint(topleftOffset),
-                                      @"pointTrack":@(pointTrack),
-                                      @"ancherpoint":NSStringFromPoint(ancherpoint)
+                                     @"scale":@(1.0),
+                                     @"BenchmarksType":@(_benchmarksTypeBtn.selectedTag),
+                                    @"ancherPointNum":@(_ancherPointNumTF.integerValue),
+                                    @"dependentCondition":dependentConditionArray
                                       } mutableCopy];
-    
-    if (fullScreenSticker) {
-        [element removeObjectForKey:@"centerPoints"];
-    }
-    
-    
-    if (_preferWField.floatValue > 0) {
-        element[@"preferWidth"] = @(_preferWField.floatValue);
-        element[@"edgePoints"] = [_wpointField.stringValue componentsSeparatedByString:@"&"];
-    }
-    
+
     [self.groupDictionary[@"elements"] addObject:element];
     
     
-    _pathTextView.string = @"";
-    
-    _nameField.stringValue = @"";
-    _widthField.stringValue = @"";
-    _heightField.stringValue = @"";
-    _centerField.stringValue = @"";
-    _offsetXField.stringValue = @"";
-    _offsetYField.stringValue = @"";
-    self.ancherpointField.stringValue = @"";
-    
-    _preferWField.stringValue = @"";
-    _wpointField.stringValue = @"";
-    _topLeftOffsetField.stringValue = @"";
+    [self reInitElement];
 }
 
 - (IBAction)create:(id)sender
 {
-    if ( self.faceWidthField.stringValue.length == 0) {
-        ;
-    }
+
     NSMutableArray *filter = [@[@{@"type":@(1),@"class":@"beauty",@"property":@{@"intensity":@(self.beautyLevelField.floatValue)}},@{@"type":@(2),@"class":@"slim",@"property":@{@"intensity":@(self.slimIntensityField.floatValue)}},@{@"type":@(10),@"class":@"GPUImageRuddyFilter",@"property":@{@"intensity_insta":@(1)}}] mutableCopy];
     NSArray *filterTmpArray = [self.filtersField.stringValue componentsSeparatedByString:@","];
     for (NSString *filterName in filterTmpArray) {
-        [filter addObject:@{@"type":@(10),@"class":filterName,@"property":@{@"intensity_insta":@(1)}}];
+        if (filterName.length) {
+            [filter addObject:@{@"type":@(10),@"class":filterName,@"property":@{@"intensity_insta":@(1)}}];
+        }
     }
 
-    
-    self.groupDictionary[@"baseFaceWidth"] = @(450);
-    self.groupDictionary[@"scaleToFace"] =@(1);
-    
-    if (fullScreenSticker) {
-        self.groupDictionary[@"baseFaceWidth"] = @(0);
-        self.groupDictionary[@"scaleToFace"] = @(1);
-    }
-    
+    self.groupDictionary[@"configVersion"] = configVersion;
+    self.groupDictionary[@"needFaceCount"] = @(_needFaceCountTF.integerValue);
+
     //用户交互提示
     NSMutableDictionary *userPromptDict = [NSMutableDictionary dictionary];
-    
-    userPromptDict[@"preferFontCam"] = @(self.preferFrontCamBtn.state);
-    userPromptDict[@"preferBackCam"] = @(self.preferBackCamBtn.state);
-    userPromptDict[@"needFace"] = [self.groupDictionary[@"baseFaceWidth"] integerValue] == 0?@(0):@(1);
-    userPromptDict[@"preferLandscape"] = @(self.preferLandscapeBtn.state);
-
-    
+    userPromptDict[@"preferFontCam"] = @(self.preFontCamBtn.state);
+    userPromptDict[@"preferBackCam"] = @(self.preBackCamBtn.state);
+    userPromptDict[@"preferLandscape"] = @(self.preLandscapeBtn.state);
+    userPromptDict[@"preferMoreFace"] = @(self.preMoreFaceBtn.state);
+    userPromptDict[@"preferMouthOpen"] = @(self.preMouthOpenBtn.state);
+ 
     [self.groupDictionary setObject:filter forKey:@"filters"];
     [self.groupDictionary setObject:userPromptDict forKey:@"userPrompts"];
     
@@ -273,7 +348,7 @@
     
     [jsonString writeToFile:[[self directoryPath] stringByAppendingPathComponent:@"Layout"] atomically:YES encoding:NSUTF8StringEncoding error:nil];
     
-    [self reInit];
+    [self reInitScene];
 }
 
 - (void)textDidChange:(NSNotification *)notification
@@ -288,7 +363,6 @@
 -(NSMutableDictionary *)groupDictionary {
     if (_groupDictionary == nil) {
         _groupDictionary = [@{
-                              @"scaleToScreen": @(1),
                               @"elements" : [@[] mutableCopy]
                               } mutableCopy];
     }
