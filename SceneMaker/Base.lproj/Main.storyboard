@@ -664,7 +664,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="SceneMaker V2.0" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="SceneMaker V2.1" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA" userLabel="SceneMaker V2.1">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -676,7 +676,7 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="108" y="176"/>
+            <point key="canvasLocation" x="425" y="-92"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -755,14 +755,14 @@
                                 <rect key="frame" x="4" y="433" width="285" height="47"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <clipView key="contentView" ambiguous="YES" id="BkM-KI-9X3">
-                                    <rect key="frame" x="1" y="1" width="268" height="45"/>
+                                    <rect key="frame" x="1" y="1" width="283" height="45"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView ambiguous="YES" importsGraphics="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="Soh-k4-Deb">
-                                            <rect key="frame" x="0.0" y="0.0" width="268" height="45"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="283" height="45"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="268" height="45"/>
+                                            <size key="minSize" width="283" height="45"/>
                                             <size key="maxSize" width="463" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <connections>
@@ -777,7 +777,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="2p9-8i-gQK">
-                                    <rect key="frame" x="269" y="1" width="15" height="45"/>
+                                    <rect key="frame" x="268" y="1" width="16" height="45"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
@@ -898,14 +898,6 @@
                                     <action selector="add:" target="XfG-lQ-9wD" id="qaR-7I-d5l"/>
                                 </connections>
                             </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8WE-n7-Iwi">
-                                <rect key="frame" x="320" y="278" width="91" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="横屏" bezelStyle="regularSquare" imagePosition="left" inset="2" id="qqc-ld-LP3">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XxO-I1-wXr">
                                 <rect key="frame" x="332" y="330" width="60" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -924,14 +916,14 @@
                                 </buttonCell>
                             </button>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tm2-zQ-mjc">
-                                <rect key="frame" x="477" y="405" width="76" height="26"/>
+                                <rect key="frame" x="469" y="405" width="96" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="固定" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" selectedItem="K5I-jW-60c" id="qoc-s6-8nr" userLabel="对点方式">
+                                <popUpButtonCell key="cell" type="push" title="固定" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" selectedItem="K5I-jW-60c" id="qoc-s6-8nr" userLabel="对点方式">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="PWT-Nv-kTM">
                                         <items>
-                                            <menuItem title="固定" id="K5I-jW-60c">
+                                            <menuItem title="固定" state="on" id="K5I-jW-60c">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
                                             <menuItem title="指定识别点" tag="1" id="sJq-dg-fzQ">
@@ -939,7 +931,16 @@
                                             </menuItem>
                                             <menuItem title="鼻尖" tag="2" id="fEd-5N-8hb"/>
                                             <menuItem title="嘴部" tag="3" id="dW5-M1-xPD"/>
-                                            <menuItem title="左上角" state="on" tag="4" id="4HF-8K-jQ8"/>
+                                            <menuItem title="左上角" tag="4" id="4HF-8K-jQ8"/>
+                                            <menuItem title="左眼" tag="5" id="h9s-gH-bUt">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="右眼" tag="6" id="cYY-6h-doI">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="两眼中点" tag="7" id="uMl-mr-GHL">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
@@ -957,7 +958,7 @@
                                 </textFieldCell>
                             </textField>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sia-pc-6vc">
-                                <rect key="frame" x="393" y="275" width="89" height="25"/>
+                                <rect key="frame" x="469" y="276" width="89" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="后置摄像头" bezelStyle="regularSquare" imagePosition="left" inset="2" id="gCG-Z5-UcQ">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -965,7 +966,7 @@
                                 </buttonCell>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U9r-Bn-dkU">
-                                <rect key="frame" x="393" y="302" width="89" height="25"/>
+                                <rect key="frame" x="470" y="303" width="89" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="前置摄像头" bezelStyle="regularSquare" imagePosition="left" inset="2" id="O2m-sA-Qat">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -982,7 +983,7 @@
                                 </textFieldCell>
                             </textField>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7EN-Kt-cOd">
-                                <rect key="frame" x="496" y="302" width="89" height="25"/>
+                                <rect key="frame" x="578" y="303" width="89" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="第二张人脸" bezelStyle="regularSquare" imagePosition="left" inset="2" id="ozn-Q5-dxm">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -990,7 +991,7 @@
                                 </buttonCell>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h7J-9t-kWt">
-                                <rect key="frame" x="496" y="275" width="89" height="25"/>
+                                <rect key="frame" x="578" y="276" width="89" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="第三张人脸" bezelStyle="regularSquare" imagePosition="left" inset="2" id="5wp-Lm-HJX">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -998,7 +999,7 @@
                                 </buttonCell>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rgQ-28-HyK">
-                                <rect key="frame" x="376" y="157" width="91" height="18"/>
+                                <rect key="frame" x="469" y="156" width="91" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="后置摄像头" bezelStyle="regularSquare" imagePosition="left" inset="2" id="hKu-gz-RbJ">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1006,7 +1007,7 @@
                                 </buttonCell>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XEX-Xv-g7K">
-                                <rect key="frame" x="376" y="184" width="91" height="18"/>
+                                <rect key="frame" x="469" y="183" width="91" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="前置摄像头" bezelStyle="regularSquare" imagePosition="left" inset="2" id="TdA-QL-cht">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1014,7 +1015,7 @@
                                 </buttonCell>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFx-dO-u2N">
-                                <rect key="frame" x="491" y="185" width="91" height="18"/>
+                                <rect key="frame" x="388" y="184" width="91" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="横屏" bezelStyle="regularSquare" imagePosition="left" inset="2" id="fix-XX-qVv">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1031,7 +1032,7 @@
                                 </textFieldCell>
                             </textField>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SLd-zu-sqi">
-                                <rect key="frame" x="491" y="157" width="91" height="18"/>
+                                <rect key="frame" x="388" y="156" width="91" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="张嘴" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Lns-uS-SKC">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1039,7 +1040,7 @@
                                 </buttonCell>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v2T-sm-wlH">
-                                <rect key="frame" x="589" y="184" width="91" height="18"/>
+                                <rect key="frame" x="584" y="184" width="91" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="更多人脸" bezelStyle="regularSquare" imagePosition="left" inset="2" id="HWA-AA-Tec">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1065,7 +1066,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TsM-Pc-XCO" userLabel="偏移量">
-                                <rect key="frame" x="479" y="371" width="57" height="17"/>
+                                <rect key="frame" x="495" y="369" width="57" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="偏移" id="Yq8-r1-DgO">
                                     <font key="font" metaFont="system"/>
@@ -1073,6 +1074,22 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8WE-n7-Iwi">
+                                <rect key="frame" x="388" y="303" width="61" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="横屏" bezelStyle="regularSquare" imagePosition="left" inset="2" id="qqc-ld-LP3">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NaM-Fi-VjB">
+                                <rect key="frame" x="389" y="279" width="65" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="竖屏" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Wum-H5-cBH">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -1082,9 +1099,10 @@
                         <outlet property="beautyLevelField" destination="zO8-36-CwR" id="M5N-FR-wQv"/>
                         <outlet property="benchmarksTypeBtn" destination="Tm2-zQ-mjc" id="quh-Lo-7PP"/>
                         <outlet property="dpBackCamBtn" destination="Sia-pc-6vc" id="qQ6-dv-3lt"/>
-                        <outlet property="dpFontCamBtn" destination="U9r-Bn-dkU" id="jv5-Yo-LGY"/>
+                        <outlet property="dpFrontCamBtn" destination="U9r-Bn-dkU" id="u1p-G8-PV7"/>
                         <outlet property="dpLandscapeBtn" destination="8WE-n7-Iwi" id="Jgd-C3-uQi"/>
                         <outlet property="dpMouthOpenBtn" destination="gR2-yK-fFr" id="K16-W6-5Ji"/>
+                        <outlet property="dpPortaitBtn" destination="NaM-Fi-VjB" id="IQU-ad-HEC"/>
                         <outlet property="dpSecondFaceBtn" destination="7EN-Kt-cOd" id="VyZ-t3-T3g"/>
                         <outlet property="dpThirdFaceBtn" destination="h7J-9t-kWt" id="hxh-Kw-4Do"/>
                         <outlet property="filtersField" destination="6fO-ds-YV2" id="lWz-t3-Ame"/>
@@ -1096,7 +1114,7 @@
                         <outlet property="offsetTF" destination="3mA-fz-TKZ" id="o9R-xN-zui"/>
                         <outlet property="pathTextView" destination="Soh-k4-Deb" id="Z5L-Xf-KdR"/>
                         <outlet property="preBackCamBtn" destination="rgQ-28-HyK" id="Ybe-7z-c0h"/>
-                        <outlet property="preFontCamBtn" destination="XEX-Xv-g7K" id="ErO-WW-te8"/>
+                        <outlet property="preFrontCamBtn" destination="XEX-Xv-g7K" id="7uP-Nj-ZRr"/>
                         <outlet property="preLandscapeBtn" destination="kFx-dO-u2N" id="jQr-Bg-tEy"/>
                         <outlet property="preMoreFaceBtn" destination="v2T-sm-wlH" id="Prn-H3-OFR"/>
                         <outlet property="preMouthOpenBtn" destination="SLd-zu-sqi" id="PPU-c0-ceh"/>
@@ -1106,7 +1124,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5.5" y="372"/>
+            <point key="canvasLocation" x="-93" y="597"/>
         </scene>
     </scenes>
     <resources>

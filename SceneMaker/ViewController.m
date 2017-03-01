@@ -73,13 +73,14 @@ static NSString *configVersion = @"1.0";
 //素材需求
 @property (weak) IBOutlet NSButton *dpMouthOpenBtn;
 @property (weak) IBOutlet NSButton *dpLandscapeBtn;
-@property (weak) IBOutlet NSButton *dpFontCamBtn;
+@property (weak) IBOutlet NSButton *dpFrontCamBtn;
 @property (weak) IBOutlet NSButton *dpBackCamBtn;
 @property (weak) IBOutlet NSButton *dpSecondFaceBtn;
 @property (weak) IBOutlet NSButton *dpThirdFaceBtn;
+@property (weak) IBOutlet NSButton *dpPortaitBtn;
 
 //用户提示
-@property (weak) IBOutlet NSButton *preFontCamBtn;
+@property (weak) IBOutlet NSButton *preFrontCamBtn;
 @property (weak) IBOutlet NSButton *preBackCamBtn;
 @property (weak) IBOutlet NSButton *preLandscapeBtn;
 @property (weak) IBOutlet NSButton *preMouthOpenBtn;
@@ -104,8 +105,7 @@ static NSString *configVersion = @"1.0";
     
     [self.animateImgButton  setNextState];
     self.filtersField.stringValue = @"";
-//    self.needFaceButton.state = 1;
-    self.preFontCamBtn.state = 0;
+    self.preFrontCamBtn.state = 0;
     self.preBackCamBtn.state = 0;
     self.preLandscapeBtn.state = 0;
     self.preMouthOpenBtn.state = 0;
@@ -131,10 +131,11 @@ static NSString *configVersion = @"1.0";
     [self changeBenchMarksType:_benchmarksTypeBtn];
     _dpMouthOpenBtn.state = 0;
     _dpLandscapeBtn.state = 0;
-    _dpFontCamBtn.state = 0;
+    _dpFrontCamBtn.state = 0;
     _dpBackCamBtn.state = 0;
     _dpSecondFaceBtn.state = 0;
     _dpThirdFaceBtn.state = 0;
+    _dpPortaitBtn.state = 0;
     
 }
 
@@ -142,29 +143,35 @@ static NSString *configVersion = @"1.0";
 - (IBAction)changeBenchMarksType:(NSPopUpButton *)sender {
     _ancherPointNumTF.editable = NO;
     NSLog(@"切换对点方式:%ld",(long)sender.selectedTag);
+    
+    if (sender.selectedTag == 0) {
+        return;
+    }
+    
+     _needFaceCountTF.intValue = MAX(_needFaceCountTF.intValue, 1);
+    
     switch (sender.selectedTag) {
         case 0:  //固定
             
             break;
         case 1:  //指定识别点
-            _needFaceCountTF.intValue = MAX(_needFaceCountTF.intValue, 1);
+           
             _ancherPointNumTF.editable = YES;
             [_ancherPointNumTF becomeFirstResponder];
             break;
         case 2:  //鼻尖
-            _needFaceCountTF.intValue = MAX(_needFaceCountTF.intValue, 1);
+        
             break;
         case 3:  //嘴部
-            _needFaceCountTF.intValue = MAX(_needFaceCountTF.intValue, 1);
+           
             break;
         case 4:  //左上角
-            _needFaceCountTF.intValue = MAX(_needFaceCountTF.intValue, 1);
+            
             break;
         default:
             break;
     }
 }
-
 
 //切换动态素材
 - (IBAction)changeIfAnimateImg:(NSButton *)sender {
@@ -177,8 +184,6 @@ static NSString *configVersion = @"1.0";
         self.animationDuritionField.stringValue = @"";
     }
 }
-
-
 
 - (NSString*)directoryPath
 {
@@ -213,8 +218,6 @@ static NSString *configVersion = @"1.0";
             [[NSFileManager defaultManager] copyItemAtPath:sourceItemPath toPath:[path stringByAppendingPathComponent:[NSString stringWithFormat:@"%d.png",i]] error:nil];
         }
     }
-    
-    
 
     //偏移量
     NSArray *offsetArray = [self.offsetTF.stringValue componentsSeparatedByString:@","];
@@ -266,8 +269,12 @@ static NSString *configVersion = @"1.0";
         [dependentConditionArray addObject:@"Landscape"];
     }
     
-    if (self.dpFontCamBtn.state) {
-        [dependentConditionArray addObject:@"FontCam"];
+    if (self.dpPortaitBtn.state) {
+        [dependentConditionArray addObject:@"Portait"];
+    }
+    
+    if (self.dpFrontCamBtn.state) {
+        [dependentConditionArray addObject:@"FrontCam"];
     }
     
     if (self.dpBackCamBtn.state) {
@@ -281,23 +288,6 @@ static NSString *configVersion = @"1.0";
     if (self.dpThirdFaceBtn.state) {
         [dependentConditionArray addObject:@"ThirdFace"];
     }
-
-    
-    
-//    NSInteger pointTrack = pointTracker;
-//    
-//    //特殊点偏移
-//    NSArray *ancherpointArray = [self.offsetTF.stringValue componentsSeparatedByString:@","];
-//    NSPoint ancherpoint = NSMakePoint(self.widthField.floatValue / 2.0, self.heightField.floatValue / 2.0);
-//
-//    if (pointTracker) {
-//        if (ancherpointArray.count == 2) {
-//            ancherpoint = NSMakePoint(ancherpoint.x + [ancherpointArray[0] floatValue],ancherpoint.y + [ancherpointArray[1] floatValue]);
-//        }
-//        
-//   
-//    }
-    
     
     NSMutableDictionary* element = [@{
                                       @"folderName": _nameField.stringValue,
@@ -320,12 +310,20 @@ static NSString *configVersion = @"1.0";
 
 - (IBAction)create:(id)sender
 {
-
-    NSMutableArray *filter = [@[@{@"type":@(1),@"class":@"beauty",@"property":@{@"intensity":@(self.beautyLevelField.floatValue)}},@{@"type":@(2),@"class":@"slim",@"property":@{@"intensity":@(self.slimIntensityField.floatValue)}},@{@"type":@(10),@"class":@"GPUImageRuddyFilter",@"property":@{@"intensity_insta":@(1)}}] mutableCopy];
+    NSMutableArray *filtersMArray = [NSMutableArray array];
+    
+    [filtersMArray addObject:@{@"type":@(1),@"class":@"beauty",@"property":@{@"intensity":@(self.beautyLevelField.floatValue)}}];
+    
+    [filtersMArray addObject:@{@"type":@(10),@"class":@"GPUImageRuddyFilter",@"property":@{@"intensity_insta":@(1)}}];
+    
+    if ([_needFaceCountTF integerValue]>0) {
+        [filtersMArray addObject:@{@"type":@(2),@"class":@"slim",@"property":@{@"intensity":@(self.slimIntensityField.floatValue)}}];
+    }
+    
     NSArray *filterTmpArray = [self.filtersField.stringValue componentsSeparatedByString:@","];
     for (NSString *filterName in filterTmpArray) {
         if (filterName.length) {
-            [filter addObject:@{@"type":@(10),@"class":filterName,@"property":@{@"intensity_insta":@(1)}}];
+            [filtersMArray addObject:@{@"type":@(10),@"class":filterName,@"property":@{@"intensity_insta":@(1)}}];
         }
     }
 
@@ -334,13 +332,13 @@ static NSString *configVersion = @"1.0";
 
     //用户交互提示
     NSMutableDictionary *userPromptDict = [NSMutableDictionary dictionary];
-    userPromptDict[@"preferFontCam"] = @(self.preFontCamBtn.state);
+    userPromptDict[@"preferFrontCam"] = @(self.preFrontCamBtn.state);
     userPromptDict[@"preferBackCam"] = @(self.preBackCamBtn.state);
     userPromptDict[@"preferLandscape"] = @(self.preLandscapeBtn.state);
     userPromptDict[@"preferMoreFace"] = @(self.preMoreFaceBtn.state);
     userPromptDict[@"preferMouthOpen"] = @(self.preMouthOpenBtn.state);
  
-    [self.groupDictionary setObject:filter forKey:@"filters"];
+    [self.groupDictionary setObject:filtersMArray forKey:@"filters"];
     [self.groupDictionary setObject:userPromptDict forKey:@"userPrompts"];
     
     NSData* data = [NSJSONSerialization dataWithJSONObject:self.groupDictionary options:0 error:nil];
@@ -362,9 +360,7 @@ static NSString *configVersion = @"1.0";
 
 -(NSMutableDictionary *)groupDictionary {
     if (_groupDictionary == nil) {
-        _groupDictionary = [@{
-                              @"elements" : [@[] mutableCopy]
-                              } mutableCopy];
+        _groupDictionary = [@{@"elements" : [@[] mutableCopy]} mutableCopy];
     }
     return _groupDictionary;
 }
