@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SceneMaker/ViewController.m"
-            timestampString = "509542332.495109"
+            timestampString = "510225518.248526"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "180"
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SceneMaker/ViewController.m"
-            timestampString = "510043651.328596"
+            timestampString = "510225518.248526"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "335"
-            endingLineNumber = "335"
+            startingLineNumber = "314"
+            endingLineNumber = "314"
             landmarkName = "-create:"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SceneMaker/ViewController.m"
-            timestampString = "509542332.495109"
+            timestampString = "510225518.248526"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
             landmarkName = "-add:"
             landmarkType = "7">
          </BreakpointContent>
@@ -68,11 +68,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SceneMaker/ViewController.m"
-            timestampString = "510043651.328596"
+            timestampString = "510225518.248526"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "355"
-            endingLineNumber = "355"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
             landmarkName = "-create:"
             landmarkType = "7">
          </BreakpointContent>
@@ -84,11 +84,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SceneMaker/ViewController.m"
-            timestampString = "510043651.328596"
+            timestampString = "510225518.248526"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "351"
-            endingLineNumber = "351"
+            startingLineNumber = "330"
+            endingLineNumber = "330"
             landmarkName = "-create:"
             landmarkType = "7">
          </BreakpointContent>
@@ -100,11 +100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SceneMaker/ViewController.m"
-            timestampString = "509542332.495109"
+            timestampString = "510225518.248526"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
             landmarkName = "-add:"
             landmarkType = "7">
          </BreakpointContent>
@@ -116,11 +116,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SceneMaker/ViewController.m"
-            timestampString = "509542332.495109"
+            timestampString = "510225518.248526"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "225"
-            endingLineNumber = "225"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
             landmarkName = "-add:"
             landmarkType = "7">
          </BreakpointContent>
@@ -132,11 +132,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SceneMaker/ViewController.m"
-            timestampString = "509542332.495109"
+            timestampString = "510225518.248526"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
             landmarkName = "-add:"
             landmarkType = "7">
          </BreakpointContent>
@@ -148,11 +148,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SceneMaker/ViewController.m"
-            timestampString = "509542332.495109"
+            timestampString = "510225518.248526"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
             landmarkName = "-add:"
             landmarkType = "7">
          </BreakpointContent>
@@ -164,11 +164,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SceneMaker/ViewController.m"
-            timestampString = "509542332.495109"
+            timestampString = "510225518.248526"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "-add:"
             landmarkType = "7">
          </BreakpointContent>
@@ -180,11 +180,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SceneMaker/ViewController.m"
-            timestampString = "509542332.495109"
+            timestampString = "510225518.248526"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
+            landmarkName = "-add:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SceneMaker/ViewController.m"
+            timestampString = "510500591.2487"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
             landmarkName = "-add:"
             landmarkType = "7">
          </BreakpointContent>

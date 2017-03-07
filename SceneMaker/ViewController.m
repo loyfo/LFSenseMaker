@@ -85,6 +85,7 @@ static NSString *configVersion = @"1.0";
 @property (weak) IBOutlet NSButton *preLandscapeBtn;
 @property (weak) IBOutlet NSButton *preMouthOpenBtn;
 @property (weak) IBOutlet NSButton *preMoreFaceBtn;
+@property (weak) IBOutlet NSButton *prePortaitBtn;
 
 
 @end
@@ -109,6 +110,7 @@ static NSString *configVersion = @"1.0";
     self.preBackCamBtn.state = 0;
     self.preLandscapeBtn.state = 0;
     self.preMouthOpenBtn.state = 0;
+    self.prePortaitBtn.state = 0;
     
     self.imgCountField.enabled = NO;
     self.animationDuritionField.enabled = NO;
@@ -204,7 +206,7 @@ static NSString *configVersion = @"1.0";
     NSString *pathText = _pathTextView.string;
     
     NSRange range = [pathText rangeOfString:[pathText lastPathComponent]];
-    NSString *floderPath = [pathText substringToIndex:range.location];
+    NSString *folderPath = [pathText substringToIndex:range.location];
     NSString *firstFileName = [pathText substringFromIndex:range.location];
     
     //原图文件名前缀
@@ -214,7 +216,7 @@ static NSString *configVersion = @"1.0";
 
     if (self.imgCountField.integerValue > 1) {
         for (int i = 1 ; i < self.imgCountField.integerValue; i++) {
-            NSString *sourceItemPath = [floderPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@%d.png",scenePrefixString,i]];
+            NSString *sourceItemPath = [folderPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@%d.png",scenePrefixString,i]];
             [[NSFileManager defaultManager] copyItemAtPath:sourceItemPath toPath:[path stringByAppendingPathComponent:[NSString stringWithFormat:@"%d.png",i]] error:nil];
         }
     }
@@ -335,6 +337,7 @@ static NSString *configVersion = @"1.0";
     userPromptDict[@"preferFrontCam"] = @(self.preFrontCamBtn.state);
     userPromptDict[@"preferBackCam"] = @(self.preBackCamBtn.state);
     userPromptDict[@"preferLandscape"] = @(self.preLandscapeBtn.state);
+    userPromptDict[@"preferPortait"] = @(self.prePortaitBtn.state);
     userPromptDict[@"preferMoreFace"] = @(self.preMoreFaceBtn.state);
     userPromptDict[@"preferMouthOpen"] = @(self.preMouthOpenBtn.state);
  
