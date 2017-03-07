@@ -741,7 +741,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IoJ-uP-gGW">
-                                <rect key="frame" x="430" y="10" width="120" height="65"/>
+                                <rect key="frame" x="227" y="10" width="120" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" title="Create" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tUF-eb-EmR">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -755,14 +755,14 @@
                                 <rect key="frame" x="4" y="433" width="285" height="47"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <clipView key="contentView" ambiguous="YES" id="BkM-KI-9X3">
-                                    <rect key="frame" x="1" y="1" width="268" height="45"/>
+                                    <rect key="frame" x="1" y="1" width="283" height="45"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView ambiguous="YES" importsGraphics="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="Soh-k4-Deb">
-                                            <rect key="frame" x="0.0" y="0.0" width="268" height="45"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="283" height="45"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="268" height="45"/>
+                                            <size key="minSize" width="283" height="45"/>
                                             <size key="maxSize" width="463" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <connections>
@@ -777,7 +777,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="2p9-8i-gQK">
-                                    <rect key="frame" x="269" y="1" width="15" height="45"/>
+                                    <rect key="frame" x="268" y="1" width="16" height="45"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
@@ -888,7 +888,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g0t-ji-YLy">
-                                <rect key="frame" x="157" y="10" width="120" height="65"/>
+                                <rect key="frame" x="46" y="10" width="120" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" title="ADD" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dFh-LW-gZ6">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1098,6 +1098,26 @@
                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
                                 </buttonCell>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aoE-Ts-AEk">
+                                <rect key="frame" x="426" y="10" width="249" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="等待客户端连接" id="hjD-5T-o6x">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IU7-x6-6IO">
+                                <rect key="frame" x="499" y="37" width="100" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="square" title="Refresh" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ihP-Pp-w85">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="refreshServerScene:" target="XfG-lQ-9wD" id="cmr-iE-pIb"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -1127,13 +1147,14 @@
                         <outlet property="preMoreFaceBtn" destination="v2T-sm-wlH" id="Prn-H3-OFR"/>
                         <outlet property="preMouthOpenBtn" destination="SLd-zu-sqi" id="PPU-c0-ceh"/>
                         <outlet property="prePortaitBtn" destination="tsd-LY-YXI" id="40k-D3-sa5"/>
+                        <outlet property="serverConnectLbl" destination="aoE-Ts-AEk" id="TRT-2q-Br2"/>
                         <outlet property="slimIntensityField" destination="c1v-J2-zsK" id="txI-dR-uTP"/>
                         <outlet property="widthField" destination="DQE-48-coX" id="Vf1-Rb-omz"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-93" y="597"/>
+            <point key="canvasLocation" x="-93.5" y="597"/>
         </scene>
     </scenes>
     <resources>

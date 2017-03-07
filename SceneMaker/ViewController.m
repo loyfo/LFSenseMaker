@@ -7,10 +7,12 @@
 //
 
 #import "ViewController.h"
+#import "LFWebServer.h"
+#import "SSZipArchive.h"
 
 static NSString *configVersion = @"1.0";
 
-@interface ViewController () <NSTextViewDelegate>
+@interface ViewController () <NSTextViewDelegate,LFWebServerDelegate>
 {
     BOOL pointTracker;
     BOOL fullScreenSticker;
@@ -87,6 +89,8 @@ static NSString *configVersion = @"1.0";
 @property (weak) IBOutlet NSButton *preMoreFaceBtn;
 @property (weak) IBOutlet NSButton *prePortaitBtn;
 
+//webserver
+@property (weak) IBOutlet NSTextField *serverConnectLbl;
 
 @end
 
@@ -98,6 +102,8 @@ static NSString *configVersion = @"1.0";
     [self reInitScene];
     [self reInitElement];
 
+    [LFWebServer shareServer].delegate = self;
+    [[LFWebServer shareServer]startServer];
     // Do any additional setup after loading the view.
 }
 
@@ -118,6 +124,7 @@ static NSString *configVersion = @"1.0";
     
     self.beautyLevelField.stringValue = @"0.65";
     self.slimIntensityField.stringValue = @"1.0";
+    
 }
 
 -(void)reInitElement {
@@ -349,6 +356,25 @@ static NSString *configVersion = @"1.0";
     
     [jsonString writeToFile:[[self directoryPath] stringByAppendingPathComponent:@"Layout"] atomically:YES encoding:NSUTF8StringEncoding error:nil];
     
+     NSString* directoryPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Scene.zip"];
+    if ([[NSFileManager defaultManager]fileExistsAtPath:directoryPath]) {
+        [[NSFileManager defaultManager]removeItemAtPath:directoryPath error:nil];
+    }
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        BOOL zipResult = [SSZipArchive createZipFileAtPath:directoryPath   withContentsOfDirectory:[self directoryPath]];
+        if (zipResult) {
+            [self refreshServerScene:nil];
+        }else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                  self.serverConnectLbl.stringValue = @"Scene包生成失败";
+            });
+          
+        }
+        
+    });
+    
+    
     [self reInitScene];
 }
 
@@ -368,5 +394,16 @@ static NSString *configVersion = @"1.0";
     return _groupDictionary;
 }
 
+- (IBAction)refreshServerScene:(NSButton *)sender {
+     self.serverConnectLbl.stringValue = @"等待客户端连接";
+     [LFWebServer shareServer].clientConnected = NO;
+}
+
+-(void)clientConnectedToServer {
+    dispatch_async(dispatch_get_main_queue(), ^{
+      self.serverConnectLbl.stringValue = @"客户端已连接";
+    });
+    
+}
 
 @end
