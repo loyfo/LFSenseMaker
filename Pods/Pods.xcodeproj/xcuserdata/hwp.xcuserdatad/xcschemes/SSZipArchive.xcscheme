@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '91E6A3D855E3256350BE8CC3AEA34AA9'
-               BlueprintName = 'Pods-SceneMaker'
+               BlueprintIdentifier = '2230A1AF1A669FDD47DF18D5B1F0309D'
+               BlueprintName = 'SSZipArchive'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libPods-SceneMaker.a'>
+               BuildableName = 'libSSZipArchive.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

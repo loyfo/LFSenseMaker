@@ -6,8 +6,8 @@ target 'SceneMaker' do
   # use_frameworks!
 
   # Pods for SceneMaker
-     pod 'GCDWebServer'
+   pod 'GCDWebServer'
    pod 'CocoaAsyncSocket'
-#   pod 'SSZipArchive', '1.6.2'
+   pod 'SSZipArchive'
 
 end

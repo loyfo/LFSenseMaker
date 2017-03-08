@@ -20,37 +20,8 @@ static NSString *configVersion = @"1.0";
     NSInteger ancherPointNum;
 }
 
-
-//@property (weak) IBOutlet NSTextField *faceWidthField;
-//@property (weak) IBOutlet NSTextField *toFaceScaleField;
-
-//@property (weak) IBOutlet NSTextField *ancherpointField;
-//
-//
-//@property (nonatomic, weak) IBOutlet NSTextField* centerField;
-//@property (nonatomic, weak) IBOutlet NSTextField* offsetXField;
-//@property (nonatomic, weak) IBOutlet NSTextField* offsetYField;
-//
-//@property (nonatomic, weak) IBOutlet NSTextField* preferWField;
-//@property (nonatomic, weak) IBOutlet NSTextField* wpointField;
-//
 @property (nonatomic, strong) NSMutableDictionary* groupDictionary;
 @property (nonatomic, strong) NSMutableArray* elementsList;
-//
-//
-//
-//@property (weak) IBOutlet NSButton *fullscreenStickerBtn;
-//
-//@property (weak) IBOutlet NSButton *needFaceButton;
-//@property (weak) IBOutlet NSButton *preferFrontCamBtn;
-//@property (weak) IBOutlet NSButton *preferBackCamBtn;
-//
-//
-//@property (weak) IBOutlet NSButton *preferLandscapeBtn;
-//@property (weak) IBOutlet NSButton *needMouthOpenBtn;
-
-
-//@property (weak) IBOutlet NSTextField *topLeftOffsetField;
 
 //new
 @property (weak) IBOutlet NSTextField *beautyLevelField;

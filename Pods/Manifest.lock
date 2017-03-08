@@ -3,15 +3,18 @@ PODS:
   - GCDWebServer (3.3.3):
     - GCDWebServer/Core (= 3.3.3)
   - GCDWebServer/Core (3.3.3)
+  - SSZipArchive (1.7)
 
 DEPENDENCIES:
   - CocoaAsyncSocket
   - GCDWebServer
+  - SSZipArchive
 
 SPEC CHECKSUMS:
   CocoaAsyncSocket: b9d5589f07baf9de8f34cc25abd4fcba28f13805
   GCDWebServer: 1c39a1f0763e4eb492bee021e4270fce097d3555
+  SSZipArchive: 63f8e11cfcc33e03e4cd666b4359ea8bd6facd0c
 
-PODFILE CHECKSUM: 5f118164c8bea22dc732bacd2ea3947417f51ffa
+PODFILE CHECKSUM: 796508f1abbc17988f27e9e3c02aa8ab00f9c5eb
 
 COCOAPODS: 1.2.0.beta.1

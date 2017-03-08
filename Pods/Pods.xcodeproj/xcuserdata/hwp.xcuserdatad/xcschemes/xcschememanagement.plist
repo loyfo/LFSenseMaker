@@ -19,15 +19,25 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SSZipArchive.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>2230A1AF1A669FDD47DF18D5B1F0309D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>23D7DA26C40DEA0CBB49A7825C7CD4F1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A3ECA311BAA7F5C7BC204E9989C3D749</key>
+		<key>91E6A3D855E3256350BE8CC3AEA34AA9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
