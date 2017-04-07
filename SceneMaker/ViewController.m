@@ -17,7 +17,7 @@ static NSString *configVersion = @"1.0";
     BOOL pointTracker;
     BOOL fullScreenSticker;
     BOOL preferMouthOpen;
-    NSInteger ancherPointNum;
+    NSInteger anchorPointNum;
 }
 
 @property (nonatomic, strong) NSMutableDictionary* groupDictionary;
@@ -33,7 +33,7 @@ static NSString *configVersion = @"1.0";
 @property (nonatomic, weak) IBOutlet NSTextField* heightField;
 
 @property (weak) IBOutlet NSPopUpButton *benchmarksTypeBtn;
-@property (weak) IBOutlet NSTextField *ancherPointNumTF;
+@property (weak) IBOutlet NSTextField *anchorPointNumTF;
 @property (weak) IBOutlet NSTextField *offsetTF;
 
 @property (nonatomic, strong) IBOutlet NSTextView* pathTextView;
@@ -50,7 +50,7 @@ static NSString *configVersion = @"1.0";
 @property (weak) IBOutlet NSButton *dpBackCamBtn;
 @property (weak) IBOutlet NSButton *dpSecondFaceBtn;
 @property (weak) IBOutlet NSButton *dpThirdFaceBtn;
-@property (weak) IBOutlet NSButton *dpPortaitBtn;
+@property (weak) IBOutlet NSButton *dpPortraitBtn;
 
 //用户提示
 @property (weak) IBOutlet NSButton *preFrontCamBtn;
@@ -58,7 +58,7 @@ static NSString *configVersion = @"1.0";
 @property (weak) IBOutlet NSButton *preLandscapeBtn;
 @property (weak) IBOutlet NSButton *preMouthOpenBtn;
 @property (weak) IBOutlet NSButton *preMoreFaceBtn;
-@property (weak) IBOutlet NSButton *prePortaitBtn;
+@property (weak) IBOutlet NSButton *prePortraitBtn;
 
 //webserver
 @property (weak) IBOutlet NSTextField *serverConnectLbl;
@@ -87,7 +87,7 @@ static NSString *configVersion = @"1.0";
     self.preBackCamBtn.state = 0;
     self.preLandscapeBtn.state = 0;
     self.preMouthOpenBtn.state = 0;
-    self.prePortaitBtn.state = 0;
+    self.prePortraitBtn.state = 0;
     
     self.imgCountField.enabled = NO;
     self.animationDuritionField.enabled = NO;
@@ -104,10 +104,10 @@ static NSString *configVersion = @"1.0";
     _nameField.stringValue = @"";
     _widthField.stringValue = @"";
     _heightField.stringValue = @"";
-    _ancherPointNumTF.stringValue = @"";
+    _anchorPointNumTF.stringValue = @"";
     _offsetTF.stringValue = @"0,0";
     
-    ancherPointNum = -1;
+    anchorPointNum = -1;
     [self changeBenchMarksType:_benchmarksTypeBtn];
     _dpMouthOpenBtn.state = 0;
     _dpLandscapeBtn.state = 0;
@@ -115,13 +115,13 @@ static NSString *configVersion = @"1.0";
     _dpBackCamBtn.state = 0;
     _dpSecondFaceBtn.state = 0;
     _dpThirdFaceBtn.state = 0;
-    _dpPortaitBtn.state = 0;
+    _dpPortraitBtn.state = 0;
     
 }
 
 //切换对点方式
 - (IBAction)changeBenchMarksType:(NSPopUpButton *)sender {
-    _ancherPointNumTF.editable = NO;
+    _anchorPointNumTF.editable = NO;
     NSLog(@"切换对点方式:%ld",(long)sender.selectedTag);
     
     if (sender.selectedTag == 0) {
@@ -136,8 +136,8 @@ static NSString *configVersion = @"1.0";
             break;
         case 1:  //指定识别点
            
-            _ancherPointNumTF.editable = YES;
-            [_ancherPointNumTF becomeFirstResponder];
+            _anchorPointNumTF.editable = YES;
+            [_anchorPointNumTF becomeFirstResponder];
             break;
         case 2:  //鼻尖
         
@@ -216,8 +216,8 @@ static NSString *configVersion = @"1.0";
     }
     
     if (_benchmarksTypeBtn.selectedTag == 1) {
-        ancherPointNum = _ancherPointNumTF.intValue;
-        if (ancherPointNum < 0 || ancherPointNum > 94) {
+        anchorPointNum = _anchorPointNumTF.intValue;
+        if (anchorPointNum < 0 || anchorPointNum > 94) {
             NSError *error = [NSError errorWithDomain:@"识别点范围不正确（0 ~ 94）！" code:1006 userInfo:nil];
             NSAlert  *ncherPointNumAlert = [NSAlert alertWithError:error];
             [ncherPointNumAlert runModal];
@@ -249,7 +249,7 @@ static NSString *configVersion = @"1.0";
         [dependentConditionArray addObject:@"Landscape"];
     }
     
-    if (self.dpPortaitBtn.state) {
+    if (self.dpPortraitBtn.state) {
         [dependentConditionArray addObject:@"Portait"];
     }
     
@@ -278,7 +278,7 @@ static NSString *configVersion = @"1.0";
                                       @"frameCount": @([faceCount integerValue]),
                                      @"scale":@(1.0),
                                      @"BenchmarksType":@(_benchmarksTypeBtn.selectedTag),
-                                    @"ancherPointNum":@(_ancherPointNumTF.integerValue),
+                                    @"anchorPointNum":@(_anchorPointNumTF.integerValue),
                                     @"dependentCondition":dependentConditionArray
                                       } mutableCopy];
 
@@ -315,7 +315,7 @@ static NSString *configVersion = @"1.0";
     userPromptDict[@"preferFrontCam"] = @(self.preFrontCamBtn.state);
     userPromptDict[@"preferBackCam"] = @(self.preBackCamBtn.state);
     userPromptDict[@"preferLandscape"] = @(self.preLandscapeBtn.state);
-    userPromptDict[@"preferPortait"] = @(self.prePortaitBtn.state);
+    userPromptDict[@"preferPortait"] = @(self.prePortraitBtn.state);
     userPromptDict[@"preferMoreFace"] = @(self.preMoreFaceBtn.state);
     userPromptDict[@"preferMouthOpen"] = @(self.preMouthOpenBtn.state);
  
