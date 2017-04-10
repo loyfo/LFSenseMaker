@@ -10,7 +10,7 @@
 #import "LFWebServer.h"
 #import "SSZipArchive.h"
 
-static NSString *configVersion = @"1.0";
+static NSString *configVersion = @"1.1";
 
 @interface ViewController () <NSTextViewDelegate,LFWebServerDelegate>
 {
